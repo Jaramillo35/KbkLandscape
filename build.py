@@ -7,9 +7,14 @@ Edit the copy in the C dict below, run the script, commit the generated HTML.
 Photos and captions come from assets/img/projects/manifest.json.
 """
 import json
+import os
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).parent
+# Preview builds: KBK_BASE=/kbk-preview KBK_OUT=/path python3 build.py  (paths rebased, noindex)
+BASE = os.environ.get("KBK_BASE", "").rstrip("/")
+OUT = Path(os.environ.get("KBK_OUT", ROOT))
 SITE = "https://kbklandscape.com"
 PHONE = "(586) 489-5613"
 TEL = "+15864895613"
@@ -429,23 +434,33 @@ def page_contact(lang, t):
 BUILDERS = {"index": page_index, "services": page_services, "projects": page_projects, "about": page_about, "contact": page_contact}
 
 
+def finish(html):
+    """Preview builds live under a sub-path and must not be indexed."""
+    if not BASE:
+        return html
+    html = re.sub(r'((?:href|src|data-full)=")/(?!/)', rf'\1{BASE}/', html)
+    html = re.sub(r'(srcset="[^"]*?)(?<=[", ])/(?=assets/)', rf'\1{BASE}/', html)
+    html = re.sub(r'(srcset="[^"]*)', lambda m: m.group(1).replace(", /assets", f", {BASE}/assets"), html)
+    return html.replace("<head>\n", '<head>\n<meta name="robots" content="noindex, nofollow">\n', 1)
+
+
 def build():
     for lang in ("en", "es"):
         t = C[lang]
-        out = ROOT / ("es" if lang == "es" else ".")
-        out.mkdir(exist_ok=True)
+        out = OUT / ("es" if lang == "es" else ".")
+        out.mkdir(parents=True, exist_ok=True)
         for page in PAGES:
             html = head(lang, page, t) + header(lang, page, t) + f'<main>{BUILDERS[page](lang, t)}</main>\n' + footer(lang, t)
-            (out / f"{page}.html").write_text(html, encoding="utf-8")
+            (out / f"{page}.html").write_text(finish(html), encoding="utf-8")
     # 404 (GitHub Pages serves /404.html for missing paths)
     t = C["en"]; n = t["notfound"]
-    (ROOT / "404.html").write_text(head("en", "index", t).replace(t["titles"]["index"], "Page not found | KBK Landscape & Beyond") + header("en", "index", t)
-        + f'<main><section class="page-hero"><div class="wrap"><h1>{n["h1"]} / {C["es"]["notfound"]["h1"]}</h1><p class="lede">{n["p"]}</p><a class="btn btn-primary" href="/">{n["btn"]}</a> <a class="btn btn-ghost" href="/es/">{C["es"]["notfound"]["btn"]}</a></div></section></main>\n' + footer("en", t), encoding="utf-8")
+    (OUT / "404.html").write_text(finish(head("en", "index", t).replace(t["titles"]["index"], "Page not found | KBK Landscape & Beyond") + header("en", "index", t)
+        + f'<main><section class="page-hero"><div class="wrap"><h1>{n["h1"]} / {C["es"]["notfound"]["h1"]}</h1><p class="lede">{n["p"]}</p><a class="btn btn-primary" href="/">{n["btn"]}</a> <a class="btn btn-ghost" href="/es/">{C["es"]["notfound"]["btn"]}</a></div></section></main>\n' + footer("en", t)), encoding="utf-8")
     # Old URL kept alive
-    (ROOT / "project.html").write_text('<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=/projects.html"><link rel="canonical" href="https://kbklandscape.com/projects.html"><title>Redirecting</title><a href="/projects.html">Projects</a>\n')
+    (OUT / "project.html").write_text('<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=/projects.html"><link rel="canonical" href="https://kbklandscape.com/projects.html"><title>Redirecting</title><a href="/projects.html">Projects</a>\n')
     urls = [f"{SITE}{href(l, p)}" for l in ("en", "es") for p in PAGES]
-    (ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n")
-    (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
+    (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n")
+    (OUT / "robots.txt").write_text(f"User-agent: *\n{'Disallow: /' if BASE else 'Allow: /'}\nSitemap: {SITE}/sitemap.xml\n")
     print("built", len(PAGES) * 2 + 1, "pages")
 
 
