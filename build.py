@@ -91,7 +91,7 @@ C = {
     "list": ["Clinton Township", "Macomb", "Shelby Township", "Sterling Heights", "Rochester Hills", "Rochester", "Troy", "Bloomfield Hills", "Birmingham", "Royal Oak", "Farmington Hills", "Grosse Pointe", "St. Clair Shores", "Warren", "Utica", "Washington Township", "Chesterfield", "West Bloomfield"]},
   "cta": {"h2": "Ready to plan your patio?", "p": "Free estimates. Jose answers the phone.", "btn": "Request a free quote"},
   "footer": {"about": "Family-owned hardscape and landscape company serving metro Detroit since 2009. Licensed Michigan LLC, fully insured.",
-    "links": "Pages", "services": "Services", "contact": "Contact", "rights": "All rights reserved.", "privacy": "We only use your details to reply to your request."},
+    "links": "Pages", "services": "Services", "contact": "Contact", "rights": "All rights reserved.", "privacy": "Privacy notice & terms"},
   "page_services": {"eyebrow": "Services", "h1": "Everything for the outside of your home", "lede": "From a single walkway to a full backyard with kitchen, fire pit and lighting. Here is what we build and what each job includes."},
   "page_projects": {"eyebrow": "Our work", "h1": "Patios, fire pits and gardens we've built", "lede": "Real projects from real backyards in Macomb and Oakland counties. Tap a photo to see it larger.",
     "cats": [("all", "All"), ("patios", "Patios & walkways"), ("firepits", "Fire pits"), ("kitchens", "Outdoor kitchens"), ("landscape", "Landscaping"), ("lighting", "Lighting"), ("pools", "Pool decks"), ("maintenance", "Sealing & repair")]},
@@ -109,6 +109,22 @@ C = {
           "details": "Anything else? Size, materials you like, photos you've seen…", "send": "Send my request", "note": "No spam, no sharing your details. Jose will reach out directly.",
           "chips": ["Paver patio", "Walkway or driveway", "Fire pit or fireplace", "Outdoor kitchen", "Retaining wall", "Landscaping & planting", "Lighting", "Sealing or repair", "Irrigation or drainage", "Cleanup or maintenance"]},
     "side": {"call": "Call or text", "email": "Email", "visit": "Shop", "hours": "Hours", "hours_v": "Mon–Fri 7:30 am – 6:30 pm<br>Sat 8 am – 3 pm<br>Sun closed", "social": "Find us on"}},
+  "privacy_page": {"title": "Privacy notice & terms | KBK Landscape & Beyond", "desc": "How KBK Landscape & Beyond LLC uses the information you send through this website, and the terms that apply to estimates and quotes.",
+    "eyebrow": "Legal", "h1": "Privacy notice & website terms", "updated": "Last updated: September 15, 2026",
+    "consent": "By sending this form you agree that KBK Landscape & Beyond LLC may contact you by phone, text message or email about your request, and you accept our <a href=\"/privacy.html\">privacy notice and terms</a>. Message and data rates may apply. Reply STOP to any text to opt out.",
+    "sections": [
+      ("Who we are", "<p>This website is operated by KBK Landscape &amp; Beyond LLC, a Michigan limited liability company located at 20752 Miles St S, Clinton Township, MI 48036 (\"KBK\", \"we\", \"us\"). Questions about this notice: <a href=\"mailto:josechavarin@kbklandscape.com\">josechavarin@kbklandscape.com</a> or (586) 489-5613.</p>"),
+      ("What we collect", "<p>When you request a quote we collect what you type into the form: your name, phone number, email address (optional), the project address or town, the services you are interested in, your budget range, timing, and any details you add. We also record the date and time, the page you sent it from, the language you used, your IP address and browser type, which we use to block spam and abuse.</p><p>If you call, text or email us, we keep the contact details and notes needed to respond and, if you hire us, to do the work.</p><p>We do not ask for and do not want payment card numbers, Social Security numbers or other sensitive personal information through this website. Please do not send them.</p>"),
+      ("How we use it", "<ul><li>To answer your request, schedule a site visit and prepare a quote.</li><li>To contact you about your project by phone, text message or email. You agree to this when you send the form. Text messages are about your request only; we will not send marketing texts unless you separately agree to them, and you can stop at any time by replying STOP.</li><li>To keep records of estimates, quotes, projects and warranties, which we need in order to honor our warranties.</li><li>To protect the website and our business from spam, fraud and abuse.</li></ul><p>We do not sell, rent or trade your personal information. We do not use it for advertising by third parties.</p>"),
+      ("Who can see it", "<p>Your information is stored on systems controlled by KBK and seen only by the owner and the people who help run the business, such as our website administrator. We share it only when needed to do the work (for example a supplier delivering material to your address), when required by law, or to protect our legal rights. If KBK is ever sold, customer records may transfer to the new owner under the same rules.</p><p>The website is hosted by GitHub Pages and uses Google Fonts and an embedded Google Map. Those providers receive your IP address and standard browser information when the page loads, under their own privacy policies. We do not set advertising or analytics cookies. The site stores your language preference in your browser only.</p>"),
+      ("How long we keep it", "<p>Quote requests that do not lead to a project are deleted or anonymized within 24 months. Records of completed projects are kept for as long as a warranty applies and as required for tax and legal purposes, then deleted.</p>"),
+      ("Your choices", "<p>You can ask us at any time what information we hold about you, ask us to correct it, or ask us to delete it, unless we need to keep it for a warranty, a contract or the law. Email <a href=\"mailto:josechavarin@kbklandscape.com\">josechavarin@kbklandscape.com</a> and we will respond within 30 days. You can also ask us to stop contacting you.</p>"),
+      ("Security", "<p>We use reasonable technical and organizational measures to protect your information, including encrypted connections to this website and access limited to the people who need it. No method of transmission or storage is completely secure, and we cannot guarantee absolute security.</p>"),
+      ("Children", "<p>This website is for adults arranging work on their property. We do not knowingly collect information from anyone under 18.</p>"),
+      ("Estimates, quotes and website content", "<p>Information on this website, including service descriptions, photos and any price ranges we may publish, is general information and not an offer. Every property is different. A quote is only binding once it is issued in writing by KBK and accepted by you, and it is subject to the conditions stated in it, such as site access, soil conditions and material availability. Free estimates may be limited to our service area.</p><p>Project photos on this site show work performed by KBK. Customer reviews are quoted from public review platforms and reflect those customers' own opinions.</p><p>Warranties are as stated in your written quote or contract: currently 3 years on new paver installations and 1 year on plants and trees we install, covering workmanship and plant health under normal care. They do not cover damage from misuse, neglect, extreme weather, settling caused by others' work, or products excluded by the manufacturer.</p>"),
+      ("Limitation of liability", "<p>To the extent permitted by Michigan law, KBK is not liable for any indirect, incidental or consequential damages arising from use of this website or reliance on its content. Nothing in this notice limits rights you have under applicable consumer protection law.</p>"),
+      ("Changes and governing law", "<p>We may update this notice from time to time; the date at the top shows the current version. This notice and any dispute relating to this website are governed by the laws of the State of Michigan.</p>"),
+    ]},
   "notfound": {"h1": "Page not found", "p": "That page moved when we rebuilt the site.", "btn": "Go to the home page"},
 },
 "es": {
@@ -170,7 +186,7 @@ C = {
     "list": ["Clinton Township", "Macomb", "Shelby Township", "Sterling Heights", "Rochester Hills", "Rochester", "Troy", "Bloomfield Hills", "Birmingham", "Royal Oak", "Farmington Hills", "Grosse Pointe", "St. Clair Shores", "Warren", "Utica", "Washington Township", "Chesterfield", "West Bloomfield"]},
   "cta": {"h2": "¿Listo para planear su patio?", "p": "Presupuesto gratis. Jose contesta el teléfono, en español o inglés.", "btn": "Pedir cotización gratis"},
   "footer": {"about": "Empresa familiar de hardscape y jardinería en el área de Detroit desde 2009. LLC registrada en Michigan, asegurada.",
-    "links": "Páginas", "services": "Servicios", "contact": "Contacto", "rights": "Todos los derechos reservados.", "privacy": "Solo usamos sus datos para responder a su solicitud."},
+    "links": "Páginas", "services": "Servicios", "contact": "Contacto", "rights": "Todos los derechos reservados.", "privacy": "Aviso de privacidad y términos"},
   "page_services": {"eyebrow": "Servicios", "h1": "Todo para el exterior de su casa", "lede": "Desde un camino sencillo hasta un patio completo con cocina, fogata e iluminación. Esto es lo que construimos y lo que incluye cada trabajo."},
   "page_projects": {"eyebrow": "Proyectos", "h1": "Patios, fogatas y jardines que hemos construido", "lede": "Proyectos reales en patios reales de los condados de Macomb y Oakland. Toque una foto para verla más grande.",
     "cats": [("all", "Todos"), ("patios", "Patios y caminos"), ("firepits", "Fogatas"), ("kitchens", "Cocinas exteriores"), ("landscape", "Jardinería"), ("lighting", "Iluminación"), ("pools", "Terrazas de piscina"), ("maintenance", "Sellado y reparación")]},
@@ -188,6 +204,22 @@ C = {
           "details": "¿Algo más? Medidas, materiales que le gustan, fotos que ha visto…", "send": "Enviar solicitud", "note": "Sin spam y sin compartir sus datos. Jose se comunicará directamente.",
           "chips": ["Patio de adoquín", "Camino o entrada de autos", "Fogata o chimenea", "Cocina exterior", "Muro de contención", "Jardinería y plantación", "Iluminación", "Sellado o reparación", "Riego o drenaje", "Limpieza o mantenimiento"]},
     "side": {"call": "Llame o mande mensaje", "email": "Correo", "visit": "Taller", "hours": "Horario", "hours_v": "Lun–Vie 7:30 am – 6:30 pm<br>Sáb 8 am – 3 pm<br>Dom cerrado", "social": "Encuéntrenos en"}},
+  "privacy_page": {"title": "Aviso de privacidad y términos | KBK Landscape & Beyond", "desc": "Cómo usa KBK Landscape & Beyond LLC la información que usted envía por este sitio, y los términos que aplican a presupuestos y cotizaciones.",
+    "eyebrow": "Legal", "h1": "Aviso de privacidad y términos del sitio", "updated": "Última actualización: 15 de septiembre de 2026",
+    "consent": "Al enviar este formulario acepta que KBK Landscape & Beyond LLC se comunique con usted por teléfono, mensaje de texto o correo sobre su solicitud, y acepta nuestro <a href=\"/es/privacy.html\">aviso de privacidad y términos</a>. Pueden aplicar tarifas de mensajes y datos. Responda STOP a cualquier texto para cancelar.",
+    "sections": [
+      ("Quiénes somos", "<p>Este sitio es operado por KBK Landscape &amp; Beyond LLC, una sociedad de responsabilidad limitada de Michigan ubicada en 20752 Miles St S, Clinton Township, MI 48036 (\"KBK\", \"nosotros\"). Preguntas sobre este aviso: <a href=\"mailto:josechavarin@kbklandscape.com\">josechavarin@kbklandscape.com</a> o (586) 489-5613.</p>"),
+      ("Qué información recopilamos", "<p>Cuando pide una cotización recopilamos lo que escribe en el formulario: nombre, teléfono, correo (opcional), la dirección o ciudad del proyecto, los servicios que le interesan, su rango de presupuesto, el plazo y los detalles que agregue. También registramos la fecha y hora, la página desde la que envió, el idioma, su dirección IP y el tipo de navegador, que usamos para bloquear spam y abusos.</p><p>Si nos llama, escribe o manda un mensaje, guardamos los datos de contacto y las notas necesarias para responder y, si nos contrata, para hacer el trabajo.</p><p>No pedimos ni queremos números de tarjeta, números de Seguro Social ni otra información sensible por este sitio. Por favor no los envíe.</p>"),
+      ("Cómo la usamos", "<ul><li>Para responder a su solicitud, programar la visita y preparar una cotización.</li><li>Para comunicarnos con usted sobre su proyecto por teléfono, mensaje de texto o correo. Usted lo acepta al enviar el formulario. Los mensajes de texto son solo sobre su solicitud; no enviaremos textos publicitarios salvo que usted lo acepte por separado, y puede cancelar en cualquier momento respondiendo STOP.</li><li>Para llevar registro de presupuestos, cotizaciones, proyectos y garantías, que necesitamos para cumplir nuestras garantías.</li><li>Para proteger el sitio y el negocio contra spam, fraude y abusos.</li></ul><p>No vendemos, rentamos ni intercambiamos su información personal. No la usamos para publicidad de terceros.</p>"),
+      ("Quién puede verla", "<p>Su información se guarda en sistemas controlados por KBK y solo la ven el propietario y las personas que ayudan a operar el negocio, como el administrador del sitio web. La compartimos solo cuando hace falta para el trabajo (por ejemplo, un proveedor que entrega material en su dirección), cuando la ley lo exige o para proteger nuestros derechos legales. Si KBK se vendiera, los registros de clientes pasarían al nuevo propietario bajo las mismas reglas.</p><p>El sitio está alojado en GitHub Pages y usa Google Fonts y un mapa de Google incrustado. Esos proveedores reciben su dirección IP e información estándar del navegador al cargar la página, bajo sus propias políticas de privacidad. No usamos cookies de publicidad ni de analítica. El sitio guarda su preferencia de idioma solo en su navegador.</p>"),
+      ("Cuánto tiempo la conservamos", "<p>Las solicitudes que no terminan en un proyecto se eliminan o anonimizan en un plazo de 24 meses. Los registros de proyectos terminados se conservan mientras aplique una garantía y lo exijan fines fiscales y legales, y después se eliminan.</p>"),
+      ("Sus opciones", "<p>Puede pedirnos en cualquier momento qué información tenemos sobre usted, pedir que la corrijamos o que la eliminemos, salvo que debamos conservarla por una garantía, un contrato o la ley. Escriba a <a href=\"mailto:josechavarin@kbklandscape.com\">josechavarin@kbklandscape.com</a> y responderemos en un plazo de 30 días. También puede pedirnos que dejemos de contactarlo.</p>"),
+      ("Seguridad", "<p>Usamos medidas técnicas y organizativas razonables para proteger su información, incluyendo conexiones cifradas a este sitio y acceso limitado a quienes lo necesitan. Ningún método de transmisión o almacenamiento es totalmente seguro y no podemos garantizar seguridad absoluta.</p>"),
+      ("Menores", "<p>Este sitio es para adultos que contratan trabajos en su propiedad. No recopilamos a sabiendas información de menores de 18 años.</p>"),
+      ("Presupuestos, cotizaciones y contenido del sitio", "<p>La información de este sitio, incluidas descripciones de servicios, fotos y cualquier rango de precios que publiquemos, es información general y no una oferta. Cada propiedad es distinta. Una cotización solo es vinculante cuando KBK la emite por escrito y usted la acepta, y está sujeta a las condiciones que indique, como acceso al sitio, condiciones del suelo y disponibilidad de materiales. Los presupuestos gratis pueden limitarse a nuestra zona de servicio.</p><p>Las fotos de proyectos muestran trabajos realizados por KBK. Las reseñas de clientes se citan de plataformas públicas y reflejan la opinión de esos clientes.</p><p>Las garantías son las que indique su cotización o contrato por escrito: actualmente 3 años en instalaciones nuevas de adoquín y 1 año en plantas y árboles que instalamos, y cubren mano de obra y salud de la planta con cuidado normal. No cubren daños por mal uso, descuido, clima extremo, hundimientos causados por trabajos de terceros ni productos excluidos por el fabricante.</p>"),
+      ("Limitación de responsabilidad", "<p>En la medida que lo permita la ley de Michigan, KBK no es responsable de daños indirectos, incidentales o consecuentes derivados del uso de este sitio o de confiar en su contenido. Nada en este aviso limita los derechos que usted tenga bajo las leyes de protección al consumidor aplicables.</p>"),
+      ("Cambios y ley aplicable", "<p>Podemos actualizar este aviso; la fecha al inicio muestra la versión vigente. Este aviso y cualquier disputa relacionada con este sitio se rigen por las leyes del Estado de Michigan.</p>"),
+    ]},
   "notfound": {"h1": "Página no encontrada", "p": "Esa página cambió de lugar cuando rediseñamos el sitio.", "btn": "Ir al inicio"},
 },
 }
@@ -204,6 +236,8 @@ def other(lang):
 
 def head(lang, page, t):
     alt = other(lang)
+    if page == "privacy":
+        t = {**t, "titles": {**t["titles"], "privacy": t["privacy_page"]["title"]}, "desc": {**t["desc"], "privacy": t["privacy_page"]["desc"]}}
     ld = ""
     if page == "index":
         ld = json.dumps({
@@ -281,7 +315,7 @@ def footer(lang, t):
       <li>{ADDRESS.replace(', ', '<br>', 1)}</li>
       <li><a href="{FACEBOOK}" rel="noopener" target="_blank">Facebook</a> · <a href="{GOOGLE}" rel="noopener" target="_blank">Google</a></li></ul></div>
   </div>
-  <div class="legal"><span>© <span data-year>2026</span> KBK Landscape &amp; Beyond LLC. {f['rights']}</span><span>{f['privacy']}</span></div>
+  <div class="legal"><span>© <span data-year>2026</span> KBK Landscape &amp; Beyond LLC. {f['rights']}</span><a href="{href(lang, 'privacy')}">{f['privacy']}</a></div>
 </div></footer>
 <div class="callbar"><a class="btn btn-ghost" style="color:var(--cream)" href="tel:{TEL}">☎ {t['call']}</a><a class="btn btn-primary" href="{href(lang, 'contact')}">{t['quote']}</a></div>
 <script src="/assets/js/site.js" defer></script>
@@ -418,7 +452,7 @@ def page_contact(lang, t):
     <div class="full"><label for="details">{f['details']}</label><textarea id="details" name="details"></textarea></div>
     <div class="hp" aria-hidden="true"><input name="website" tabindex="-1" autocomplete="off"></div>
     <div class="form-msg" role="status"></div>
-    <div class="full"><button class="btn btn-primary" type="submit">{f['send']}</button><p class="form-note" style="margin-top:12px">{f['note']}</p></div>
+    <div class="full"><button class="btn btn-primary" type="submit">{f['send']}</button><p class="form-note" style="margin-top:12px">{t['privacy_page']['consent']}</p></div>
   </form>
   <aside class="contact-side">
     <dl><dt>{s['call']}</dt><dd><a href="tel:{TEL}">{PHONE}</a></dd></dl>
@@ -431,7 +465,14 @@ def page_contact(lang, t):
 </div></section>"""
 
 
-BUILDERS = {"index": page_index, "services": page_services, "projects": page_projects, "about": page_about, "contact": page_contact}
+def page_privacy(lang, t):
+    p = t["privacy_page"]
+    body = "".join(f"<h2 style='font-size:1.4rem;margin-top:1.8em'>{h}</h2>{html}" for h, html in p["sections"])
+    return f"""<section class="page-hero"><div class="wrap"><p class="eyebrow">{p['eyebrow']}</p><h1>{p['h1']}</h1><p class="lede">{p['updated']}</p></div></section>
+<section><div class="wrap" style="max-width:820px">{body}</div></section>"""
+
+
+BUILDERS = {"index": page_index, "privacy": page_privacy, "services": page_services, "projects": page_projects, "about": page_about, "contact": page_contact}
 
 
 def finish(html):
@@ -449,7 +490,7 @@ def build():
         t = C[lang]
         out = OUT / ("es" if lang == "es" else ".")
         out.mkdir(parents=True, exist_ok=True)
-        for page in PAGES:
+        for page in PAGES + ["privacy"]:
             html = head(lang, page, t) + header(lang, page, t) + f'<main>{BUILDERS[page](lang, t)}</main>\n' + footer(lang, t)
             (out / f"{page}.html").write_text(finish(html), encoding="utf-8")
     # 404 (GitHub Pages serves /404.html for missing paths)
@@ -458,7 +499,7 @@ def build():
         + f'<main><section class="page-hero"><div class="wrap"><h1>{n["h1"]} / {C["es"]["notfound"]["h1"]}</h1><p class="lede">{n["p"]}</p><a class="btn btn-primary" href="/">{n["btn"]}</a> <a class="btn btn-ghost" href="/es/">{C["es"]["notfound"]["btn"]}</a></div></section></main>\n' + footer("en", t)), encoding="utf-8")
     # Old URL kept alive
     (OUT / "project.html").write_text('<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=/projects.html"><link rel="canonical" href="https://kbklandscape.com/projects.html"><title>Redirecting</title><a href="/projects.html">Projects</a>\n')
-    urls = [f"{SITE}{href(l, p)}" for l in ("en", "es") for p in PAGES]
+    urls = [f"{SITE}{href(l, p)}" for l in ("en", "es") for p in PAGES + ["privacy"]]
     (OUT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n")
     (OUT / "robots.txt").write_text(f"User-agent: *\n{'Disallow: /' if BASE else 'Allow: /'}\nSitemap: {SITE}/sitemap.xml\n")
     print("built", len(PAGES) * 2 + 1, "pages")
