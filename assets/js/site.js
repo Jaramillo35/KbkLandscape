@@ -61,6 +61,8 @@
 
   // Quote form → KBK Office on the Pi; falls back to a pre-filled email
   const form = $('form.quote');
+  // Preview copies of the site (not on kbklandscape.com) talk to KBK Office on the same host.
+  if (form && !location.hostname.endsWith('kbklandscape.com')) form.action = `http://${location.hostname}:8800/kbk-api/leads`;
   if (form) form.addEventListener('submit', async e => {
     e.preventDefault();
     const msg = $('.form-msg', form), btn = $('button[type=submit]', form);
