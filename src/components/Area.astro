@@ -2,12 +2,56 @@
 import { towns } from '../data/site.js';
 const { t } = Astro.props;
 const { c, u } = t;
-// Simple equirectangular projection of real coordinates onto a 600x420 sheet.
-const W = 600, H = 420, LON0 = -83.46, LON1 = -82.74, LAT0 = 42.77, LAT1 = 42.35;
+
+// Real coordinates on a flat sheet. Longitude is squeezed by cos(latitude)
+// so distances read true: 0.76 deg wide x 0.44 deg tall -> 600 x 472.
+const W = 600, H = 472, LON0 = -83.46, LON1 = -82.7, LAT0 = 42.78, LAT1 = 42.34;
 const px = (lon) => +(((lon - LON0) / (LON1 - LON0)) * W).toFixed(1);
 const py = (lat) => +(((LAT0 - lat) / (LAT0 - LAT1)) * H).toFixed(1);
-const pts = towns.map(([name, lat, lon, home], i) => ({ name, x: px(lon), y: py(lat), home, i }));
-const border = px(-83.09);
+const xy = ([lat, lon]) => [px(lon), py(lat)];
+
+// A smooth line through points (Catmull-Rom turned into cubic curves).
+const curve = (ll) => {
+  const p = ll.map(xy);
+  let d = `M${p[0][0]} ${p[0][1]}`;
+  for (let i = 0; i < p.length - 1; i++) {
+    const a = p[i - 1] || p[i], b = p[i], e = p[i + 1], f = p[i + 2] || e;
+    const r = (n) => +n.toFixed(1);
+    d += `C${r(b[0] + (e[0] - a[0]) / 6)} ${r(b[1] + (e[1] - a[1]) / 6)} ${r(e[0] - (f[0] - b[0]) / 6)} ${r(e[1] - (f[1] - b[1]) / 6)} ${e[0]} ${e[1]}`;
+  }
+  return d;
+};
+
+// Lake St. Clair's western shore, south to north, then Anchor Bay.
+const shore = [
+  [42.34, -82.95], [42.365, -82.925], [42.385, -82.895], [42.41, -82.878], [42.45, -82.87], [42.5, -82.873],
+  [42.535, -82.868], [42.555, -82.85], [42.566, -82.815], [42.576, -82.79], [42.592, -82.787], [42.615, -82.792],
+  [42.64, -82.785], [42.66, -82.768], [42.675, -82.745], [42.684, -82.72], [42.686, -82.7],
+];
+const shoreD = curve(shore);
+const lakeD = `${shoreD}L${W} ${py(42.686)}L${W} ${H}L${px(-82.95)} ${H}Z`;
+
+const roads = [
+  { id: 'I-75', at: [42.712, -83.288], d: curve([[42.34, -83.06], [42.4, -83.08], [42.46, -83.1], [42.5, -83.105], [42.56, -83.13], [42.6, -83.17], [42.66, -83.24], [42.74, -83.39], [42.78, -83.46]]) },
+  { id: 'I-94', at: [42.425, -82.965], d: curve([[42.34, -83.03], [42.39, -82.99], [42.44, -82.94], [42.5, -82.92], [42.56, -82.89], [42.6, -82.86], [42.66, -82.82], [42.7, -82.77], [42.735, -82.7]]) },
+  { id: 'I-696', at: [42.468, -83.29], d: curve([[42.489, -83.46], [42.488, -83.38], [42.487, -83.3], [42.478, -83.2], [42.476, -83.11], [42.492, -82.97], [42.498, -82.915]]) },
+  { id: 'M-59', at: [42.662, -83.36], d: curve([[42.655, -83.46], [42.64, -83.29], [42.63, -83.15], [42.628, -83.03], [42.63, -82.845]]) },
+].map((r) => ({ ...r, x: px(r.at[1]), y: py(r.at[0]) }));
+
+// Where each town's name sits around its dot, chosen so nothing collides.
+const place = {
+  'Clinton Township': 'n', 'Sterling Heights': 's', 'Bloomfield Hills': 'n', 'West Bloomfield': 's', 'Farmington Hills': 's',
+  Warren: 'nw', Birmingham: 'w', 'Royal Oak': 'w', 'Rochester Hills': 'w', 'St. Clair Shores': 'w', 'Grosse Pointe': 'w',
+  Chesterfield: 's', Utica: 'sw',
+};
+const label = { e: [9, 3.5, 'start'], w: [-9, 3.5, 'end'], n: [0, -10, 'middle'], s: [0, 17, 'middle'], se: [8, 15, 'start'], sw: [-8, 15, 'end'], nw: [-7, -7, 'end'] };
+const pts = towns.map(([name, lat, lon, home], i) => {
+  const [dx, dy, anchor] = label[place[name] || 'e'];
+  return { name, x: px(lon), y: py(lat), home, i, dx, dy: home ? dy - 6 : dy, anchor };
+});
+
+const bx = px(-83.09), wy = py(42.447), wx = px(-82.871);
+const mile5 = +((5 / 69.05 / (LAT0 - LAT1)) * H).toFixed(1);
 ---
 <section class="area" id="area" data-area>
   <div class="wrap area-in">
@@ -22,21 +66,42 @@ const border = px(-83.09);
       </ul>
     </div>
     <figure class="map" aria-hidden="true">
-      <svg viewBox="0 0 600 420" fill="none">
-        <g class="map-lines">
-          <path d="M8 8h584v404H8z" pathLength="1" />
-          <path d={`M${border} 8v404`} pathLength="1" class="dash" />
-          <path d={`M${px(-82.9)} 412C${px(-82.86)} ${py(42.42)} ${px(-82.9)} ${py(42.47)} ${px(-82.87)} ${py(42.52)}S${px(-82.8)} ${py(42.6)} ${px(-82.8)} ${py(42.66)} ${px(-82.76)} ${py(42.72)} ${px(-82.745)} 8`} pathLength="1" />
-          <path d={`M${px(-82.86)} 412C${px(-82.82)} ${py(42.43)} ${px(-82.86)} ${py(42.48)} ${px(-82.83)} ${py(42.53)}S${px(-82.765)} ${py(42.6)} ${px(-82.765)} ${py(42.65)}`} pathLength="1" class="thin" />
-          <path d="M40 392h80M40 387v10M120 387v10M548 60V28M540 38l8-10 8 10" pathLength="1" class="thin" />
+      <svg viewBox={`0 0 ${W} ${H}`} fill="none">
+        <defs>
+          <clipPath id="map-sheet"><rect width={W} height={H} /></clipPath>
+          <pattern id="map-water" width="14" height="7" patternUnits="userSpaceOnUse">
+            <path d="M0 3.5q3.5-3 7 0t7 0" class="map-wave" />
+          </pattern>
+        </defs>
+        <g clip-path="url(#map-sheet)">
+          <path d={lakeD} class="map-lake-fill" />
+          <path d={lakeD} fill="url(#map-water)" />
+          <path d={shoreD} class="map-shore" />
+          <path d={`M${bx} 0V${wy}`} class="map-border" />
+          <path d={`M0 ${wy}H${wx}`} class="map-border" />
+          {roads.map((r) => <path d={r.d} class="map-road" />)}
         </g>
-        <text x={border - 14} y="30" text-anchor="end" class="map-county">{u.oakland}</text>
-        <text x={border + 14} y="30" class="map-county">{u.macomb}</text>
-        <text x={px(-82.79)} y={py(42.5)} class="map-lake" transform={`rotate(-68 ${px(-82.79)} ${py(42.5)})`}>{u.lake}</text>
+        <rect x=".5" y=".5" width={W - 1} height={H - 1} class="map-frame" />
+
+        <text x="18" y="26" class="map-county">{u.oakland}</text>
+        <text x={bx + 12} y="26" class="map-county">{u.macomb}</text>
+        <text x="18" y={wy + 20} class="map-county">{u.wayne}</text>
+        <text x={px(-82.79)} y={py(42.46)} text-anchor="middle" class="map-lake">{u.lake}</text>
+        {roads.map((r) => <text x={r.x} y={r.y} text-anchor="middle" class="map-roadname">{r.id}</text>)}
+
+        <g class="map-key">
+          <path d={`M18 ${H - 20}h${mile5}M18 ${H - 24}v8M${18 + mile5} ${H - 24}v8`} />
+          <text x={18 + mile5 / 2} y={H - 28} text-anchor="middle">5 mi</text>
+          <path d={`M${W - 26} ${H - 18}v-30M${W - 32} ${H - 39}l6-9 6 9`} />
+          <text x={W - 26} y={H - 54} text-anchor="middle">N</text>
+        </g>
+
         {pts.map((p) => (
           <g class={`map-pt${p.home ? ' is-home' : ''}`} data-pt={p.i} transform={`translate(${p.x} ${p.y})`}>
-            <circle r={p.home ? 5 : 3} />
-            {p.home && <circle r="11" class="ring" />}
+            <circle r="16" class="hit" />
+            {p.home && <circle r="10" class="ring" />}
+            <circle r={p.home ? 4.5 : 3} class="dot" />
+            <text x={p.dx} y={p.dy} text-anchor={p.anchor}>{p.name}</text>
           </g>
         ))}
       </svg>
