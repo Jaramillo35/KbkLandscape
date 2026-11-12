@@ -1,0 +1,292 @@
+[
+ {
+  "id": "fire-pit-patio",
+  "cat": "firepits",
+  "en": "Gas fire pit with natural-stone cap",
+  "es": "Fogata de gas con remate de piedra natural",
+  "town": "Bloomfield Hills",
+  "w": 2320,
+  "h": 1740,
+  "portrait": false
+ },
+ {
+  "id": "firepit-pavers",
+  "cat": "firepits",
+  "en": "Raised paver patio with fire pit and seating wall",
+  "es": "Patio elevado de adoqu\u00edn con fogata y muro de asiento",
+  "town": "Rochester Hills",
+  "w": 1160,
+  "h": 870,
+  "portrait": false
+ },
+ {
+  "id": "firepit-curved",
+  "cat": "firepits",
+  "en": "Curved seating wall and fire pit",
+  "es": "Muro curvo de asiento y fogata",
+  "town": "Macomb",
+  "w": 2320,
+  "h": 1740,
+  "portrait": false
+ },
+ {
+  "id": "firepit-circle",
+  "cat": "firepits",
+  "en": "Circular paver fire pit area",
+  "es": "\u00c1rea circular de adoqu\u00edn con fogata",
+  "town": "Clinton Township",
+  "w": 1160,
+  "h": 870,
+  "portrait": false
+ },
+ {
+  "id": "firepit-round-wall",
+  "cat": "firepits",
+  "en": "Round fire pit with block seating wall",
+  "es": "Fogata redonda con muro de bloque",
+  "town": "Shelby Township",
+  "w": 2320,
+  "h": 1305,
+  "portrait": false
+ },
+ {
+  "id": "firepit-sunset",
+  "cat": "firepits",
+  "en": "Pergola, fire pit and seating wall",
+  "es": "P\u00e9rgola, fogata y muro de asiento",
+  "town": "Troy",
+  "w": 984,
+  "h": 1312,
+  "portrait": true
+ },
+ {
+  "id": "patio-grand-stairs",
+  "cat": "patios",
+  "en": "Paver patio with lit steps",
+  "es": "Patio de adoqu\u00edn con escalones iluminados",
+  "town": "Bloomfield Hills",
+  "w": 960,
+  "h": 720,
+  "portrait": false
+ },
+ {
+  "id": "patio-herringbone",
+  "cat": "patios",
+  "en": "Herringbone paver patio with grill station",
+  "es": "Patio de adoqu\u00edn en espiga con asador",
+  "town": "Sterling Heights",
+  "w": 1160,
+  "h": 870,
+  "portrait": false
+ },
+ {
+  "id": "patio-modern",
+  "cat": "patios",
+  "en": "Large-format pavers with contrast border",
+  "es": "Adoquines de gran formato con borde en contraste",
+  "town": "Birmingham",
+  "w": 1160,
+  "h": 870,
+  "portrait": false
+ },
+ {
+  "id": "patio-brick",
+  "cat": "patios",
+  "en": "Brick paver patio and seating wall",
+  "es": "Patio de adoqu\u00edn de ladrillo y muro de asiento",
+  "town": "Farmington Hills",
+  "w": 1160,
+  "h": 870,
+  "portrait": false
+ },
+ {
+  "id": "patio-pergola",
+  "cat": "patios",
+  "en": "Paver patio under a cedar pergola",
+  "es": "Patio de adoqu\u00edn bajo p\u00e9rgola de cedro",
+  "town": "Royal Oak",
+  "w": 1160,
+  "h": 870,
+  "portrait": false
+ },
+ {
+  "id": "patio-circle",
+  "cat": "patios",
+  "en": "Circle-kit paver patio",
+  "es": "Patio de adoqu\u00edn con c\u00edrculo central",
+  "town": "Clinton Township",
+  "w": 2320,
+  "h": 1305,
+  "portrait": false
+ },
+ {
+  "id": "patio-walkway",
+  "cat": "patios",
+  "en": "Winding paver walkway and patio",
+  "es": "Camino y patio de adoqu\u00edn",
+  "town": "Macomb",
+  "w": 2320,
+  "h": 1305,
+  "portrait": false
+ },
+ {
+  "id": "patio-sealed",
+  "cat": "maintenance",
+  "en": "Cleaned and sealed paver patio",
+  "es": "Patio de adoqu\u00edn lavado y sellado",
+  "town": "Warren",
+  "w": 2320,
+  "h": 1305,
+  "portrait": false
+ },
+ {
+  "id": "kitchen-grill",
+  "cat": "kitchens",
+  "en": "Outdoor kitchen with built-in grill",
+  "es": "Cocina exterior con asador empotrado",
+  "town": "Rochester Hills",
+  "w": 1160,
+  "h": 870,
+  "portrait": false
+ },
+ {
+  "id": "kitchen-bar",
+  "cat": "kitchens",
+  "en": "Stone bar and grill island",
+  "es": "Barra de piedra e isla con asador",
+  "town": "Bloomfield Hills",
+  "w": 2320,
+  "h": 1305,
+  "portrait": false
+ },
+ {
+  "id": "kitchen-brick",
+  "cat": "kitchens",
+  "en": "Brick grill enclosure on herringbone pavers",
+  "es": "Asador de ladrillo sobre adoqu\u00edn en espiga",
+  "town": "Grosse Pointe",
+  "w": 1160,
+  "h": 1553,
+  "portrait": true
+ },
+ {
+  "id": "lighting-steps",
+  "cat": "lighting",
+  "en": "Step lights on a paver entry",
+  "es": "Luces de escal\u00f3n en entrada de adoqu\u00edn",
+  "town": "Birmingham",
+  "w": 984,
+  "h": 1312,
+  "portrait": true
+ },
+ {
+  "id": "lighting-facade",
+  "cat": "lighting",
+  "en": "Low-voltage landscape lighting",
+  "es": "Iluminaci\u00f3n de jard\u00edn de bajo voltaje",
+  "town": "Bloomfield Hills",
+  "w": 2320,
+  "h": 1305,
+  "portrait": false
+ },
+ {
+  "id": "lighting-path",
+  "cat": "lighting",
+  "en": "Lit stepping-stone path",
+  "es": "Sendero de piedra iluminado",
+  "town": "Troy",
+  "w": 768,
+  "h": 1024,
+  "portrait": true
+ },
+ {
+  "id": "garden-path",
+  "cat": "landscape",
+  "en": "Flagstone path through new plantings",
+  "es": "Sendero de laja entre plantas nuevas",
+  "town": "Royal Oak",
+  "w": 2320,
+  "h": 1740,
+  "portrait": false
+ },
+ {
+  "id": "garden-front",
+  "cat": "landscape",
+  "en": "Front-yard planting beds",
+  "es": "Jardineras de jard\u00edn frontal",
+  "town": "Clinton Township",
+  "w": 1160,
+  "h": 777,
+  "portrait": false
+ },
+ {
+  "id": "garden-boulders",
+  "cat": "landscape",
+  "en": "Boulder steps and perennial beds",
+  "es": "Escalones de roca y jardineras",
+  "town": "Rochester",
+  "w": 2320,
+  "h": 1740,
+  "portrait": false
+ },
+ {
+  "id": "garden-terraces",
+  "cat": "landscape",
+  "en": "Terraced retaining walls",
+  "es": "Muros de contenci\u00f3n en terrazas",
+  "town": "Shelby Township",
+  "w": 2320,
+  "h": 1305,
+  "portrait": false
+ },
+ {
+  "id": "garden-drybed",
+  "cat": "landscape",
+  "en": "River-rock drainage bed with perennials",
+  "es": "Cama de drenaje con roca de r\u00edo",
+  "town": "Macomb",
+  "w": 1160,
+  "h": 870,
+  "portrait": false
+ },
+ {
+  "id": "pool-deck",
+  "cat": "pools",
+  "en": "Brick paver pool deck",
+  "es": "Terraza de piscina en adoqu\u00edn",
+  "town": "Sterling Heights",
+  "w": 2320,
+  "h": 1733,
+  "portrait": false
+ },
+ {
+  "id": "pool-modern",
+  "cat": "pools",
+  "en": "Modern pool surround with large-format pavers",
+  "es": "Entorno de piscina con adoqu\u00edn de gran formato",
+  "town": "Bloomfield Hills",
+  "w": 960,
+  "h": 720,
+  "portrait": false
+ },
+ {
+  "id": "wall-steps",
+  "cat": "patios",
+  "en": "Bluestone patio and fire table",
+  "es": "Patio de piedra azul y mesa de fuego",
+  "town": "Birmingham",
+  "w": 1536,
+  "h": 2048,
+  "portrait": true
+ },
+ {
+  "id": "sealing",
+  "cat": "firepits",
+  "en": "Fire pit patio with seating wall",
+  "es": "Patio con fogata y muro de asiento",
+  "town": "Clinton Township",
+  "w": 1160,
+  "h": 870,
+  "portrait": false
+ }
+]
