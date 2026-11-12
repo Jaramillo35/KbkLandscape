@@ -1,0 +1,28 @@
+---
+const { t } = Astro.props;
+const { c } = t;
+const pad = (n) => String(n + 1).padStart(2, '0');
+---
+<section class="process" id="process" data-process>
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="eyebrow" data-rise>{c.steps.eyebrow}</p>
+      <h2 data-split-scroll>{c.steps.h2}</h2>
+    </header>
+    <div class="steps">
+      <svg class="steps-line" viewBox="0 0 1200 80" preserveAspectRatio="none" fill="none" aria-hidden="true">
+        <path d="M0 40C120 8 220 72 340 40S560 8 680 40s220 32 340 0 120-20 180 0" pathLength="1" vector-effect="non-scaling-stroke" data-line />
+      </svg>
+      <i class="steps-rail" aria-hidden="true"><b data-rail></b></i>
+      <ol>
+        {c.steps.items.map(([h, p], i) => (
+          <li data-step>
+            <span class="step-n">{pad(i)}</span>
+            <h3>{h}</h3>
+            <p>{p}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>

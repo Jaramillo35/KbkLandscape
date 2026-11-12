@@ -1,0 +1,18 @@
+{
+  "name": "kbk-landscape",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "video": "node scripts/compress-video.mjs",
+    "deploy": "sh scripts/deploy.sh"
+  },
+  "dependencies": {
+    "astro": "^5.0.0",
+    "astro-relative-links": "^0.4.2",
+    "gsap": "^3.13.0",
+    "lenis": "^1.1.0"
+  }
+}

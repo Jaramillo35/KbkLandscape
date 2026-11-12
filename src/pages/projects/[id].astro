@@ -1,0 +1,6 @@
+---
+import V from "../../views/ProjectView.astro";
+import { featured } from "../../data/site.js";
+export function getStaticPaths() { return featured.map((f) => ({ params: { id: f.id } })); }
+---
+<V lang="en" id={Astro.params.id} />

@@ -1,0 +1,16 @@
+---
+// KBK mark: a "K" laid from three pavers inside a surveyor's circle.
+// Every stroke carries pathLength=1 so the loader can draw it.
+const { size = 44, class: cls = '' } = Astro.props;
+---
+<svg class={`mark ${cls}`} width={size} height={size} viewBox="0 0 48 48" fill="none" aria-hidden="true">
+  <circle class="mark-ring" cx="24" cy="24" r="21.5" stroke="currentColor" stroke-width="1" pathLength="1" />
+  <g class="mark-ticks" stroke="currentColor" stroke-width="1">
+    <path d="M24 0v5M24 43v5M0 24h5M43 24h5" pathLength="1" />
+  </g>
+  <g class="mark-k" stroke="currentColor" stroke-width="4.6">
+    <path d="M18.4 12.5v23" pathLength="1" />
+    <path d="M23.2 24.4 32.6 13" pathLength="1" />
+    <path d="M23.2 23.6 32.6 35" pathLength="1" />
+  </g>
+</svg>

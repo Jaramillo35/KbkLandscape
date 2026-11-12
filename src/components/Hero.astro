@@ -1,0 +1,51 @@
+---
+const { t } = Astro.props;
+const { c, u } = t;
+---
+<section class="hero" data-hero>
+  <div class="hero-media" data-hero-media>
+    <picture>
+      <source type="image/avif" srcset="/assets/img/hero-1000.avif 1000w, /assets/img/hero-2000.avif 2000w" sizes="100vw">
+      <source type="image/webp" srcset="/assets/img/hero-1000.webp 1000w, /assets/img/hero-2000.webp 2000w" sizes="100vw">
+      <img src="/assets/img/hero-1000.webp" alt="" width="2000" height="1250" fetchpriority="high" decoding="sync">
+    </picture>
+    <video muted loop playsinline preload="none" data-src="/assets/video/hero-loop.mp4" data-src-sm="/assets/video/hero-loop-sm.mp4" data-video aria-hidden="true" tabindex="-1"></video>
+  </div>
+  <div class="hero-shade"></div>
+
+  <!-- Plan-view sketch of the fire-table patio in the film: drawn on load -->
+  <svg class="hero-plan" viewBox="0 0 420 300" fill="none" aria-hidden="true" data-draw-group>
+    <path d="M30 40h360v220H30z" pathLength="1" />
+    <path d="M30 96h360M30 152h360M30 208h360M102 40v56M210 40v56M318 40v56M156 96v56M264 96v56M102 152v56M210 152v56M318 152v56M156 208v52M264 208v52" pathLength="1" class="thin" />
+    <path d="M150 118h120v64H150z" pathLength="1" />
+    <path d="M166 132h88v36h-88z" pathLength="1" class="thin" />
+    <path d="M30 278h360M30 272v12M390 272v12M12 40v220M6 40h12M6 260h12" pathLength="1" class="thin" />
+    <circle cx="352" cy="74" r="16" pathLength="1" class="thin" />
+    <path d="M352 52v44M330 74h44" pathLength="1" class="thin" />
+  </svg>
+
+  <div class="hero-in wrap">
+    <p class="eyebrow" data-in>{c.area_line}</p>
+    <h1 data-split>{c.hero.h1}</h1>
+    <div class="hero-foot">
+      <p class="lede" data-in>{c.hero.lede}</p>
+      <div class="cta" data-in>
+        <a class="btn btn-brass" href={t.href('contact')}><span>{t.quote}</span></a>
+        <a class="btn btn-ghost" href={t.href('projects')} data-cursor={u.view}><span>{c.hero.cta2}</span></a>
+      </div>
+    </div>
+    <dl class="stats">
+      {u.stats.map(([big, small, star]) => (
+        <div data-in>
+          <dt>
+            {big}
+            {star && <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.3 1.3-6.6L2.5 9.5l6.6-.8z" /></svg>}
+          </dt>
+          <dd>{small}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+
+  <a class="scroll-cue" href="#philosophy" data-in><span>{u.scroll}</span><i></i></a>
+</section>

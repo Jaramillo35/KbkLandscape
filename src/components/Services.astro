@@ -1,0 +1,64 @@
+---
+const { t } = Astro.props;
+const { c, u } = t;
+const items = t.homeServices;
+const sp = t.href('services');
+const pad = (n) => String(n + 1).padStart(2, '0');
+---
+<section class="services" id="services" data-services>
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="eyebrow" data-rise>{c.services_intro.eyebrow}</p>
+      <h2 data-split-scroll>{c.services_intro.h2}</h2>
+      <p class="lede" data-rise>{c.services_intro.p}</p>
+    </header>
+
+    <div class="svc">
+      <ol class="svc-list">
+        {items.map((it, i) => (
+          <li class="svc-row" data-svc={i}>
+            <h3>
+              <button type="button" class="svc-btn" aria-expanded="false" aria-controls={`svc-p${i}`} data-href={`${sp}#${it.slug}`} data-cursor={u.view}>
+                <span class="svc-n">{pad(i)}</span>
+                <span class="svc-name">{it.name}</span>
+                <span class="svc-plus" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="svc-panel" id={`svc-p${i}`}>
+              <div class="svc-panel-in">
+                <figure class="svc-inline">
+                  {it.media.type === 'video'
+                    ? <video muted loop playsinline preload="none" data-poster={`/assets/video/${it.media.src}.webp`} data-src={`/assets/video/${it.media.src}.mp4`} aria-label={`${it.photo.label}, ${it.photo.town}`}></video>
+                    : <img src={`/assets/img/projects/${it.media.id}-800.webp`} alt={`${it.photo.label}, ${it.photo.town}`} width={it.photo.w} height={it.photo.h} loading="lazy" decoding="async">}
+                  <figcaption>{it.photo.label} · {it.photo.town}</figcaption>
+                </figure>
+                <p>{it.text}</p>
+                <a class="lnk lnk-arrow" href={`${sp}#${it.slug}`}>{c.more}</a>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <!-- Desktop stage: one frame, six layers, revealed by clip-path -->
+      <div class="svc-stage" aria-hidden="true">
+        <div class="svc-frame">
+          {items.map((it, i) => (
+            <div class="svc-layer" data-layer={i}>
+              {it.media.type === 'video'
+                ? <video muted loop playsinline preload="none" data-poster={`/assets/video/${it.media.src}.webp`} data-src={`/assets/video/${it.media.src}.mp4`} tabindex="-1"></video>
+                : <img src={`/assets/img/projects/${it.media.id}.webp`} alt="" loading="lazy" decoding="async">}
+            </div>
+          ))}
+          <svg class="svc-corners" viewBox="0 0 100 100" preserveAspectRatio="none" fill="none"><path d="M0 8V0h8M92 0h8v8M100 92v8h-8M8 100H0v-8" vector-effect="non-scaling-stroke" /></svg>
+        </div>
+        <div class="svc-cap">
+          <span class="svc-count"><b data-count>01</b> / {pad(items.length - 1)}</span>
+          <span class="svc-label">
+            {items.map((it, i) => <span data-cap={i}>{it.photo.label} · {it.photo.town}</span>)}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

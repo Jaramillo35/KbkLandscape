@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Process from '../components/Process.astro';
+import { getT } from '../data/site.js';
+const t = getT(Astro.props.lang);
+const { c, u } = t;
+const p = c.page_services;
+const pad = (n) => String(n + 1).padStart(2, '0');
+---
+<Base t={t} path="/services.html" title={t.title('services')} desc={t.desc('services')} solid>
+  <PageHero eyebrow={p.eyebrow} h1={p.h1} lede={p.lede} />
+  <div class="svcp wrap">
+    {t.services.map((s, i) => {
+      const ph = t.photo(s.img);
+      return (
+        <article class="svcp-item" id={s.slug}>
+          <figure class="svcp-fig" data-clip>
+            <img src={`/assets/img/projects/${s.img}.webp`} srcset={`/assets/img/projects/${s.img}-800.webp 800w, /assets/img/projects/${s.img}.webp ${ph.w}w`} sizes="(max-width: 64rem) 100vw, 50vw" alt={`${ph.label}, ${ph.town}`} width={ph.w} height={ph.h} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" data-parallax-img>
+            <figcaption>{ph.label} · {ph.town}</figcaption>
+          </figure>
+          <div class="svcp-body">
+            <span class="svc-n" data-rise>{pad(i)}</span>
+            <h2 data-split-scroll>{s.name}</h2>
+            <p class="lede" data-rise>{s.text}</p>
+            <h3 class="eyebrow" data-rise>{u.included}</h3>
+            <ul class="ticks">{s.list.map((x) => <li data-rise>{x}</li>)}</ul>
+            <a class="btn btn-green" href={t.href('contact')} data-rise><span>{t.quote}</span></a>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+  <Process t={t} />
+</Base>

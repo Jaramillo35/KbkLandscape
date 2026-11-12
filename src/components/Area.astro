@@ -1,0 +1,45 @@
+---
+import { towns } from '../data/site.js';
+const { t } = Astro.props;
+const { c, u } = t;
+// Simple equirectangular projection of real coordinates onto a 600x420 sheet.
+const W = 600, H = 420, LON0 = -83.46, LON1 = -82.74, LAT0 = 42.77, LAT1 = 42.35;
+const px = (lon) => +(((lon - LON0) / (LON1 - LON0)) * W).toFixed(1);
+const py = (lat) => +(((LAT0 - lat) / (LAT0 - LAT1)) * H).toFixed(1);
+const pts = towns.map(([name, lat, lon, home], i) => ({ name, x: px(lon), y: py(lat), home, i }));
+const border = px(-83.09);
+---
+<section class="area" id="area" data-area>
+  <div class="wrap area-in">
+    <div class="area-copy">
+      <header class="sec-head">
+        <p class="eyebrow" data-rise>{c.areas.eyebrow}</p>
+        <h2 data-split-scroll>{c.areas.h2}</h2>
+        <p class="lede" data-rise>{c.areas.p}</p>
+      </header>
+      <ul class="towns">
+        {pts.map((p) => <li data-town={p.i} class={p.home ? 'is-home' : ''}>{p.name}</li>)}
+      </ul>
+    </div>
+    <figure class="map" aria-hidden="true">
+      <svg viewBox="0 0 600 420" fill="none">
+        <g class="map-lines">
+          <path d="M8 8h584v404H8z" pathLength="1" />
+          <path d={`M${border} 8v404`} pathLength="1" class="dash" />
+          <path d={`M${px(-82.9)} 412C${px(-82.86)} ${py(42.42)} ${px(-82.9)} ${py(42.47)} ${px(-82.87)} ${py(42.52)}S${px(-82.8)} ${py(42.6)} ${px(-82.8)} ${py(42.66)} ${px(-82.76)} ${py(42.72)} ${px(-82.745)} 8`} pathLength="1" />
+          <path d={`M${px(-82.86)} 412C${px(-82.82)} ${py(42.43)} ${px(-82.86)} ${py(42.48)} ${px(-82.83)} ${py(42.53)}S${px(-82.765)} ${py(42.6)} ${px(-82.765)} ${py(42.65)}`} pathLength="1" class="thin" />
+          <path d="M40 392h80M40 387v10M120 387v10M548 60V28M540 38l8-10 8 10" pathLength="1" class="thin" />
+        </g>
+        <text x={border - 14} y="30" text-anchor="end" class="map-county">{u.oakland}</text>
+        <text x={border + 14} y="30" class="map-county">{u.macomb}</text>
+        <text x={px(-82.79)} y={py(42.5)} class="map-lake" transform={`rotate(-68 ${px(-82.79)} ${py(42.5)})`}>{u.lake}</text>
+        {pts.map((p) => (
+          <g class={`map-pt${p.home ? ' is-home' : ''}`} data-pt={p.i} transform={`translate(${p.x} ${p.y})`}>
+            <circle r={p.home ? 5 : 3} />
+            {p.home && <circle r="11" class="ring" />}
+          </g>
+        ))}
+      </svg>
+    </figure>
+  </div>
+</section>

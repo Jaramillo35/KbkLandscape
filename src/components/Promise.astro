@@ -1,0 +1,30 @@
+---
+const { t } = Astro.props;
+const { c } = t;
+// Herringbone: pavers 2:1, laid in pairs, each a stroke that draws itself.
+const U = 28;
+const pavers = [];
+for (let r = -1; r < 9; r++) {
+  for (let k = -2; k < 12; k++) {
+    const x = k * 2 * U + r * U, y = r * U;
+    pavers.push(`M${x} ${y}h${2 * U}v${U}h${-2 * U}z`);
+    pavers.push(`M${x + 2 * U} ${y - U}h${U}v${2 * U}h${-U}z`);
+  }
+}
+---
+<section class="promise" id="promise" data-promise>
+  <svg class="pavers" viewBox="0 0 560 224" preserveAspectRatio="xMaxYMid slice" fill="none" aria-hidden="true">
+    {pavers.map((d) => <path d={d} pathLength="1" data-paver />)}
+  </svg>
+  <div class="wrap promise-in">
+    <header class="sec-head">
+      <p class="eyebrow" data-rise>{c.warranty.eyebrow}</p>
+      <h2 data-split-scroll>{c.warranty.h2}</h2>
+    </header>
+    <dl class="promise-list">
+      {c.warranty.items.map(([big, small]) => (
+        <div data-rise><dt>{big}</dt><dd>{small}</dd></div>
+      ))}
+    </dl>
+  </div>
+</section>

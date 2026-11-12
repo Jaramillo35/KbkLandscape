@@ -1,0 +1,17 @@
+---
+const { eyebrow, h1, lede } = Astro.props;
+---
+<section class="phero">
+  <svg class="phero-art" viewBox="0 0 900 700" fill="none" aria-hidden="true" data-draw-group>
+    <path d="M452 96c118-22 262 28 318 132 52 98 22 232-64 306-96 82-250 96-366 46-112-48-196-166-176-286 18-108 168-176 288-198z" pathLength="1" />
+    <path d="M458 150c94-16 204 24 248 104 42 78 18 182-50 240-76 64-196 76-288 36-88-38-154-130-138-224 14-84 132-140 228-156z" pathLength="1" />
+    <path d="M462 206c70-12 150 18 182 78 30 56 12 132-38 174-56 46-142 54-210 26-64-28-112-94-100-162 10-62 96-104 166-116z" pathLength="1" />
+    <path d="M468 262c44-8 96 12 116 50 20 36 8 84-24 110-36 30-90 34-134 16-40-18-70-60-64-102 8-40 62-66 106-74z" pathLength="1" />
+  </svg>
+  <div class="wrap phero-in">
+    {eyebrow && <p class="eyebrow" data-in>{eyebrow}</p>}
+    <h1 data-split>{h1}</h1>
+    {lede && <p class="lede" data-in>{lede}</p>}
+    <slot />
+  </div>
+</section>

@@ -1,0 +1,55 @@
+---
+const { t } = Astro.props;
+const { c, u } = t;
+const pad = (n) => String(n + 1).padStart(2, '0');
+---
+<section class="work" id="work" data-work>
+  <div class="work-pin">
+    <header class="work-head wrap">
+      <div>
+        <p class="eyebrow" data-rise>{c.work.eyebrow}</p>
+        <h2 data-split-scroll>{c.work.h2}</h2>
+      </div>
+      <a class="lnk lnk-arrow" href={t.href('projects')} data-rise>{c.work.all}</a>
+    </header>
+    <div class="work-view" data-cursor-zone>
+      <ol class="work-track" data-track>
+        {t.featured.map((f, i) => (
+          <li class="work-card" data-card>
+            <a href={f.href} data-cursor={u.view}>
+              <div class={`work-img${i === 0 ? ' has-plan' : ''}`} data-mask>
+                <img src={`/assets/img/projects/${f.id}.webp`} srcset={`/assets/img/projects/${f.id}-800.webp 800w, /assets/img/projects/${f.id}.webp ${f.photo.w}w`} sizes="(max-width: 64rem) 84vw, 46vw" alt={`${f.photo.label}, ${f.photo.town}`} width={f.photo.w} height={f.photo.h} loading="lazy" decoding="async">
+                {i === 0 && (
+                  <svg class="plan" viewBox="0 0 960 720" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true" data-plan>
+                    <g class="plan-main">
+                      <path d="M530 185 780 172M505 210l275-13M475 235l305-13M445 258l333-11M410 282l365-9M410 282v-13l365-8" pathLength="1" />
+                      <path d="M325 182l205-12M325 182l5 98 80 5" pathLength="1" />
+                      <path d="M768 118 960 95M768 133l192-23M780 133l-5 202 185 30" pathLength="1" />
+                      <path d="M300 0v210M562 0v165M690 0v140l80-5M888 0v95M375 0v78l77-6V0" pathLength="1" />
+                      <path d="M105 238l220-6M105 238v17l223 17M0 258l410 32 365 15" pathLength="1" />
+                      <path d="M0 340l250 90 30 15M0 362l190 88M0 490l150-20 130-25M155 478l175 97 270 145" pathLength="1" />
+                    </g>
+                    <g class="plan-thin">
+                      <path d="M180 300l780 45M230 345l730 65M250 395l710 95M200 440l760 150M245 517l715 175M330 590l310 130" pathLength="1" />
+                      <path d="M480 628l105-58 105-58M300 470l120-55M560 440l100-45M700 560l100-55M760 410l90-38M420 360l80-30M850 640l65-40" pathLength="1" />
+                    </g>
+                  </svg>
+                )}
+              </div>
+              <div class="work-meta">
+                <span class="work-n">{pad(i)}</span>
+                <span class="work-t">{f.photo.label}</span>
+                <span class="work-town">{f.photo.town}</span>
+              </div>
+            </a>
+            {i === 0 && <p class="plan-tag" aria-hidden="true"><span data-tag-a>{u.blueprint}</span><i></i><span data-tag-b>{u.built}</span></p>}
+          </li>
+        ))}
+        <li class="work-end">
+          <a class="btn btn-ghost" href={t.href('projects')}><span>{c.work.all}</span></a>
+        </li>
+      </ol>
+    </div>
+    <div class="work-bar wrap" aria-hidden="true"><i data-bar></i></div>
+  </div>
+</section>

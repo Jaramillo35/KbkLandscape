@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import Logo from '../components/Logo.astro';
+import { getT } from '../data/site.js';
+const t = getT('en');
+const swatches = [['Heritage green', '#1f3d2b'], ['Night', '#12211a'], ['Bone', '#f4efe6'], ['Paper', '#ebe4d6'], ['Limestone', '#d9d0c1'], ['Charcoal', '#1c1d1b'], ['Brass', '#b08d57'], ['Brass (text)', '#7d5f33']];
+---
+<Base t={t} path="/brand.html" title="Brand sheet | KBK Landscape & Beyond" desc="Logo options, palette and type." noindex solid>
+  <section class="phero"><div class="wrap phero-in"><p class="eyebrow" data-in>Internal</p><h1 data-split>Brand sheet</h1></div></section>
+  <section class="wrap brand-sheet">
+    <h2 class="eyebrow">Logo A (in use): K laid from three pavers</h2>
+    <div class="brand-row">
+      <div class="brand-tile dark"><Logo size={120} /><span class="brand-t"><b>KBK</b><i>Landscape &amp; Beyond</i></span></div>
+      <div class="brand-tile"><Logo size={120} /><span class="brand-t"><b>KBK</b><i>Landscape &amp; Beyond</i></span></div>
+    </div>
+    <h2 class="eyebrow">Logo B: three paver courses in a survey circle</h2>
+    <div class="brand-row">
+      {['dark', ''].map((c) => (
+        <div class={`brand-tile ${c}`}>
+          <svg width="120" height="120" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="21.5" stroke="currentColor" stroke-width="1" />
+            <path d="M24 0v5M24 43v5M0 24h5M43 24h5" stroke="currentColor" stroke-width="1" />
+            <g stroke="currentColor" stroke-width="1.6"><path d="M12 15h11v5H12zM25 15h11v5H25zM9.500 21.500h8v5h-8zM19.500 21.500h11v5h-11zM32.500 21.500h6v5h-6zM12 28h11v5H12zM25 28h11v5H25z" /></g>
+          </svg>
+          <span class="brand-t"><b>KBK</b><i>Landscape &amp; Beyond</i></span>
+        </div>
+      ))}
+    </div>
+    <h2 class="eyebrow">Palette</h2>
+    <div class="brand-sw">{swatches.map(([n, h]) => <div><i style={`background:${h}`}></i><b>{n}</b><span>{h}</span></div>)}</div>
+    <h2 class="eyebrow">Type: Zodiak (display) and Switzer (text)</h2>
+    <p class="statement">Outdoor spaces built to last, by a crew that shows up.</p>
+    <p class="lede">Paver patios, fire pits, outdoor kitchens and landscapes across Macomb and Oakland counties.</p>
+  </section>
+</Base>
+<style>
+  .brand-sheet { padding-block: 4rem 6rem; display: grid; gap: 1.5rem; }
+  .brand-sheet h2 { margin-top: 2rem; }
+  .brand-row { display: grid; gap: 1rem; }
+  .brand-tile { display: flex; align-items: center; gap: 1.5rem; padding: 2.5rem; background: var(--paper); color: var(--green); }
+  .brand-tile.dark { background: var(--night); color: var(--brass-lite); }
+  .brand-tile :global(.brand-t) { color: inherit; }
+  .brand-tile.dark :global(.brand-t) { color: var(--bone); }
+  .brand-tile :global(.brand-t b) { font-size: 2.5rem; }
+  .brand-tile :global(.brand-t i) { font-size: .75rem; }
+  .brand-sw { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .brand-sw i { display: block; aspect-ratio: 3 / 2; border: 1px solid var(--stone); }
+  .brand-sw b { display: block; margin-top: .5rem; font-weight: 500; }
+  .brand-sw span { font-size: .875rem; color: var(--char-soft); }
+  @media (min-width: 48rem) { .brand-row { grid-template-columns: 1fr 1fr; } .brand-sw { grid-template-columns: repeat(4, 1fr); } }
+</style>

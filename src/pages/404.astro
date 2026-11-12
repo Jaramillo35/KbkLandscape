@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { getT } from '../data/site.js';
+const t = getT('en');
+const es = getT('es');
+---
+<Base t={t} path="/404.html" title={`${t.c.notfound.h1} | KBK Landscape & Beyond`} desc={t.c.notfound.p} noindex solid>
+  <PageHero eyebrow="404" h1={`${t.c.notfound.h1} / ${es.c.notfound.h1}`} lede={t.c.notfound.p}>
+    <div class="cta" data-in>
+      <a class="btn btn-brass" href="/"><span>{t.c.notfound.btn}</span></a>
+      <a class="btn btn-ghost" href="/es/"><span>{es.c.notfound.btn}</span></a>
+    </div>
+  </PageHero>
+</Base>

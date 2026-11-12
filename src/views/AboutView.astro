@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Promise from '../components/Promise.astro';
+import Reviews from '../components/Reviews.astro';
+import { getT } from '../data/site.js';
+const t = getT(Astro.props.lang);
+const { c } = t;
+const p = c.page_about;
+const pad = (n) => String(n + 1).padStart(2, '0');
+const ph = t.photo('firepit-pavers');
+---
+<Base t={t} path="/about.html" title={t.title('about')} desc={t.desc('about')} solid>
+  <PageHero eyebrow={p.eyebrow} h1={p.h1} lede={p.lede} />
+  <section class="about wrap">
+    <figure class="about-fig" data-clip>
+      <img src="/assets/img/projects/firepit-pavers.webp" alt={`${ph.label}, ${ph.town}`} width={ph.w} height={ph.h} decoding="async" data-parallax-img>
+      <figcaption>{ph.label} · {ph.town}</figcaption>
+    </figure>
+    <ol class="about-list">
+      {p.blocks.map(([h, body], i) => (
+        <li>
+          <span class="svc-n" data-rise>{pad(i)}</span>
+          <h2 data-split-scroll>{h}</h2>
+          <p data-rise>{body}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+  <section class="about-stats">
+    <dl class="wrap">
+      {p.stats.map(([big, small]) => <div data-rise><dt>{big}</dt><dd>{small}</dd></div>)}
+    </dl>
+  </section>
+  <Promise t={t} />
+  <Reviews t={t} />
+</Base>

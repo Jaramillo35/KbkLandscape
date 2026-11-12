@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import { getT, photos, biz } from '../data/site.js';
+const { lang, id } = Astro.props;
+const t = getT(lang);
+const { c, u } = t;
+const f = t.featured.find((x) => x.id === id);
+const next = t.featured[(f.n + 1) % t.featured.length];
+const ph = f.photo;
+const more = photos.filter((m) => m.cat === ph.cat && m.id !== id).slice(0, 3).map((m) => t.photo(m.id));
+const title = `${ph.label}, ${ph.town} | ${biz.name}`;
+const desc = `${ph.label} · ${ph.town}. ${f.service.text}`;
+const pad = (n) => String(n + 1).padStart(2, '0');
+---
+<Base t={t} path={`/projects/${id}.html`} title={title} desc={desc} solid>
+  <article class="proj">
+    <header class="proj-head wrap">
+      <a class="lnk lnk-back" href={t.href('projects')} data-in>{u.back}</a>
+      <p class="eyebrow" data-in>{u.project} {pad(f.n)}</p>
+      <h1 data-split>{ph.label}</h1>
+      <dl class="proj-meta" data-in>
+        <div><dt>{u.location}</dt><dd>{ph.town}, Michigan</dd></div>
+        <div><dt>{u.service}</dt><dd><a class="lnk" href={`${t.href('services')}#${f.service.slug}`}>{f.service.name}</a></dd></div>
+      </dl>
+    </header>
+    <figure class="proj-hero" data-clip>
+      {f.video
+        ? <video muted loop playsinline preload="none" poster={`/assets/img/projects/${id}.webp`} data-src={`/assets/video/${f.video}.mp4`} data-auto aria-label={`${ph.label}, ${ph.town}`}></video>
+        : <img src={`/assets/img/projects/${id}.webp`} alt={`${ph.label}, ${ph.town}`} width={ph.w} height={ph.h} fetchpriority="high" data-parallax-img>}
+    </figure>
+    <section class="proj-body wrap">
+      <div>
+        <h2 data-split-scroll>{f.service.name}</h2>
+        <p class="lede" data-rise>{f.service.text}</p>
+        <a class="btn btn-green" href={t.href('contact')} data-rise><span>{t.quote}</span></a>
+      </div>
+      <div>
+        <h3 class="eyebrow" data-rise>{u.included}</h3>
+        <ul class="ticks">{f.service.list.map((x) => <li data-rise>{x}</li>)}</ul>
+      </div>
+    </section>
+    {more.length > 0 && (
+      <section class="proj-more wrap">
+        {more.map((m) => (
+          <figure data-clip>
+            <img src={`/assets/img/projects/${m.id}-800.webp`} alt={`${m.label}, ${m.town}`} width={m.w} height={m.h} loading="lazy" decoding="async">
+            <figcaption>{m.label} · {m.town}</figcaption>
+          </figure>
+        ))}
+      </section>
+    )}
+    <a class="proj-next" href={next.href} data-cursor={u.view}>
+      <img src={`/assets/img/projects/${next.id}-800.webp`} alt="" loading="lazy" decoding="async">
+      <span class="wrap"><i class="eyebrow">{u.next}</i><b>{next.photo.label}</b><em>{next.photo.town}</em></span>
+    </a>
+  </article>
+</Base>

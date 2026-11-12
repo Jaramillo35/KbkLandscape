@@ -1,0 +1,31 @@
+---
+const { t } = Astro.props;
+const { c, u } = t;
+---
+<section class="philo" id="philosophy">
+  <!-- contour lines: the lay of the land, drifting slower than the page -->
+  <svg class="contours" viewBox="0 0 900 700" fill="none" aria-hidden="true" data-parallax="-12">
+    <path d="M452 96c118-22 262 28 318 132 52 98 22 232-64 306-96 82-250 96-366 46-112-48-196-166-176-286 18-108 168-176 288-198z" />
+    <path d="M458 150c94-16 204 24 248 104 42 78 18 182-50 240-76 64-196 76-288 36-88-38-154-130-138-224 14-84 132-140 228-156z" />
+    <path d="M462 206c70-12 150 18 182 78 30 56 12 132-38 174-56 46-142 54-210 26-64-28-112-94-100-162 10-62 96-104 166-116z" />
+    <path d="M468 262c44-8 96 12 116 50 20 36 8 84-24 110-36 30-90 34-134 16-40-18-70-60-64-102 8-40 62-66 106-74z" />
+    <path d="M474 318c20-4 44 6 52 22 10 16 4 38-10 50-16 14-42 16-60 8-18-8-32-28-30-46 4-18 28-30 48-34z" />
+  </svg>
+  <div class="wrap philo-in">
+    <p class="eyebrow" data-rise>{u.philosophy}</p>
+    <h2 class="sr">{c.why.h2}</h2>
+    <p class="statement" data-words>{c.why.p}</p>
+    <div class="philo-grid">
+      <figure class="philo-fig" data-clip>
+        <img src="/assets/img/about-800.webp" srcset="/assets/img/about-800.webp 800w, /assets/img/about.webp 1200w" sizes="(max-width: 64rem) 100vw, 56vw" alt="" width="1200" height="900" loading="lazy" decoding="async" data-parallax-img>
+      </figure>
+      <div class="philo-side">
+        <p class="philo-h" data-rise>{c.why.h2}</p>
+        <ul class="ticks">
+          {c.why.list.map((x) => <li data-rise>{x}</li>)}
+        </ul>
+        <a class="lnk lnk-arrow" href={t.href('about')} data-rise>{c.nav.about}</a>
+      </div>
+    </div>
+  </div>
+</section>

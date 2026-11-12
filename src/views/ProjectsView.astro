@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { getT, photos } from '../data/site.js';
+const t = getT(Astro.props.lang);
+const { c, u } = t;
+const p = c.page_projects;
+const feat = Object.fromEntries(t.featured.map((f) => [f.id, f]));
+// featured six first, then the rest in manifest order
+const list = [...t.featured.map((f) => f.photo), ...photos.filter((m) => !feat[m.id]).map((m) => t.photo(m.id))];
+---
+<Base t={t} path="/projects.html" title={t.title('projects')} desc={t.desc('projects')} solid>
+  <PageHero eyebrow={p.eyebrow} h1={p.h1} lede={p.lede} />
+  <section class="gal wrap" data-gallery>
+    <div class="filters" role="group" aria-label={p.eyebrow}>
+      {p.cats.map(([cat, name], i) => <button type="button" data-filter={cat} aria-pressed={i === 0 ? 'true' : 'false'}>{name}</button>)}
+    </div>
+    <div class="gal-grid">
+      {list.map((m, i) => {
+        const img = <img src={`/assets/img/projects/${m.id}-800.webp`} alt={`${m.label}, ${m.town}`} width={m.w} height={m.h} loading={i < 3 ? 'eager' : 'lazy'} decoding="async">;
+        const cap = <span class="gal-cap"><b>{m.label}</b><i>{m.town}</i></span>;
+        return feat[m.id]
+          ? <a class="gal-item is-feature" href={feat[m.id].href} data-cat={m.cat} data-cursor={u.view}><span class="gal-img">{img}</span>{cap}</a>
+          : <button type="button" class="gal-item" data-cat={m.cat} data-full={`/assets/img/projects/${m.id}.webp`} data-cursor={u.view}><span class="gal-img">{img}</span>{cap}</button>;
+      })}
+    </div>
+  </section>
+  <dialog class="lightbox" data-lightbox aria-label={u.project}>
+    <form method="dialog"><button class="lightbox-x" aria-label={u.close}><i></i><i></i></button></form>
+    <img alt="">
+    <p></p>
+  </dialog>
+</Base>

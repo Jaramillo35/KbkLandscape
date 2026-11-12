@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { getT, biz, form } from '../data/site.js';
+const t = getT(Astro.props.lang);
+const { c, u } = t;
+const p = c.page_contact, f = p.f, s = p.side;
+---
+<Base t={t} path="/contact.html" title={t.title('contact')} desc={t.desc('contact')} solid>
+  <PageHero eyebrow={p.eyebrow} h1={p.h1} lede={p.lede} />
+  <section class="contact wrap">
+    <form class="qform" action={form.endpoint} method="post" novalidate data-form data-key={form.web3formsKey}
+      data-sending={u.sending} data-ok={u.ok} data-err={u.err}>
+      <div class="field">
+        <label for="name">{f.name}</label>
+        <input id="name" name="name" required autocomplete="name" data-msg={u.vName} aria-describedby="name-e">
+        <p class="field-e" id="name-e" role="alert"></p>
+      </div>
+      <div class="field">
+        <label for="phone">{f.phone}</label>
+        <input id="phone" name="phone" type="tel" inputmode="tel" required pattern="[0-9()+.\\-\\s]{7,}" autocomplete="tel" data-msg={u.vPhone} aria-describedby="phone-e">
+        <p class="field-e" id="phone-e" role="alert"></p>
+      </div>
+      <div class="field">
+        <label for="email">{f.email}</label>
+        <input id="email" name="email" type="email" autocomplete="email" data-msg={u.vEmail} aria-describedby="email-e">
+        <p class="field-e" id="email-e" role="alert"></p>
+      </div>
+      <div class="field">
+        <label for="address">{f.address}</label>
+        <input id="address" name="address" autocomplete="street-address">
+      </div>
+      <fieldset class="field full">
+        <legend>{f.services}</legend>
+        <div class="chips">
+          {f.chips.map((x) => <label><input type="checkbox" name="services" value={x}><span>{x}</span></label>)}
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="budget">{f.budget}</label>
+        <select id="budget" name="budget">{f.budget_opts.map((x) => <option>{x}</option>)}</select>
+      </div>
+      <div class="field">
+        <label for="when">{f.when}</label>
+        <select id="when" name="when">{f.when_opts.map((x) => <option>{x}</option>)}</select>
+      </div>
+      <div class="field full">
+        <label for="details">{f.details}</label>
+        <textarea id="details" name="details" rows="4"></textarea>
+      </div>
+      <div class="hp" aria-hidden="true"><input name="website" tabindex="-1" autocomplete="off"></div>
+      <div class="full qform-end">
+        <button class="btn btn-green" type="submit"><span>{f.send}</span></button>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+        <p class="form-note" set:html={c.privacy_page.consent}></p>
+      </div>
+    </form>
+    <aside class="contact-side">
+      <dl>
+        <div data-rise><dt>{s.call}</dt><dd><a class="contact-tel" href={`tel:${biz.tel}`} data-cursor={u.call}>{biz.telText}</a></dd></div>
+        <div data-rise><dt>{s.email}</dt><dd><a class="lnk" href={`mailto:${biz.email}`}>{biz.email}</a></dd></div>
+        <div data-rise><dt>{s.visit}</dt><dd>{biz.street}<br>{biz.city}, {biz.region} {biz.zip}</dd></div>
+        <div data-rise><dt>{s.hours}</dt><dd set:html={s.hours_v}></dd></div>
+        <div data-rise><dt>{s.social}</dt><dd><a class="lnk" href={biz.facebook} rel="noopener" target="_blank">Facebook</a> · <a class="lnk" href={biz.google} rel="noopener" target="_blank">Google</a></dd></div>
+      </dl>
+      <div class="contact-map" data-clip><iframe src={biz.mapEmbed} loading="lazy" title={s.visit} referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+    </aside>
+  </section>
+</Base>

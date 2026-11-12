@@ -1,0 +1,26 @@
+---
+const { t } = Astro.props;
+const { u } = t;
+const svc = t.homeServices[5];
+const ph = t.photo('lighting-facade');
+---
+<section class="dusk" id="lighting" data-dusk>
+  <div class="wrap dusk-in">
+    <header class="sec-head">
+      <p class="eyebrow" data-rise>{u.duskHint}</p>
+      <h2 data-split-scroll>{svc.name}</h2>
+      <p class="lede" data-rise>{svc.text}</p>
+    </header>
+    <figure class="dusk-fig" data-rise>
+      <div class="dusk-stage" data-stage data-cursor={u.drag} style="--p:.2">
+        <img class="dusk-off" src="/assets/img/projects/lighting-facade.webp" alt="" width={ph.w} height={ph.h} loading="lazy" decoding="async">
+        <img class="dusk-on" src="/assets/img/projects/lighting-facade.webp" alt={`${ph.label}, ${ph.town}`} width={ph.w} height={ph.h} loading="lazy" decoding="async">
+        <div class="dusk-handle" aria-hidden="true"><i></i><b><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6" /></svg></b></div>
+        <span class="dusk-tag dusk-tag-a" aria-hidden="true">{u.lit}</span>
+        <span class="dusk-tag dusk-tag-b" aria-hidden="true">{u.dusk}</span>
+        <input class="dusk-range" type="range" min="0" max="100" value="20" aria-label={u.duskLabel} data-range>
+      </div>
+      <figcaption>{ph.label} · {ph.town}</figcaption>
+    </figure>
+  </div>
+</section>

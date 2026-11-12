@@ -1,0 +1,148 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import { biz } from '../data/site.js';
+
+// `path` is language-neutral ("/", "/services.html", "/projects/kitchen-bar.html").
+const { t, path = '/', title, desc, noindex = false, solid = false, schema = [] } = Astro.props;
+const { c, u } = t;
+const canonical = biz.url + t.prefix + path;
+const here = (href) => href === t.prefix + path;
+
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'HomeAndConstructionBusiness',
+  '@id': `${biz.url}/#business`,
+  name: biz.legal, url: biz.url, telephone: biz.tel, email: biz.email,
+  image: `${biz.url}/assets/img/og.jpg`,
+  foundingDate: '2009-04-24',
+  founder: { '@type': 'Person', name: 'Jose Chavarin' },
+  address: { '@type': 'PostalAddress', streetAddress: biz.street, addressLocality: biz.city, addressRegion: biz.region, postalCode: biz.zip, addressCountry: 'US' },
+  geo: { '@type': 'GeoCoordinates', latitude: 42.5823975, longitude: -82.9116363 },
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '07:30', closes: '18:30' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '08:00', closes: '15:00' },
+  ],
+  areaServed: ['Macomb County, MI', 'Oakland County, MI'],
+  priceRange: '$$',
+  sameAs: [biz.facebook, biz.google],
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '614' },
+  review: t.reviews.map((r) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: r.name },
+    reviewBody: r.text,
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+  })),
+};
+---
+<!doctype html>
+<html lang={t.lang}>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{title}</title>
+<meta name="description" content={desc}>
+{noindex && <meta name="robots" content="noindex">}
+<link rel="canonical" href={canonical}>
+<link rel="alternate" hreflang="en" href={biz.url + path}>
+<link rel="alternate" hreflang="es" href={`${biz.url}/es${path}`}>
+<link rel="alternate" hreflang="x-default" href={biz.url + path}>
+<meta property="og:title" content={title}>
+<meta property="og:description" content={desc}>
+<meta property="og:image" content={`${biz.url}/assets/img/og.jpg`}>
+<meta property="og:type" content="website">
+<meta property="og:url" content={canonical}>
+<meta property="og:locale" content={t.lang === 'es' ? 'es_US' : 'en_US'}>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#12211a">
+<link rel="icon" href="/assets/img/icon-32.png" sizes="32x32">
+<link rel="icon" href="/assets/img/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/icon-180.png">
+<link rel="preload" href="/assets/fonts/zodiak-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/switzer-var.woff2" as="font" type="font/woff2" crossorigin>
+<script is:inline>
+  // Motion classes are set before first paint so nothing flashes. If the
+  // main script never arrives, the timeout shows everything anyway.
+  (function () {
+    var d = document.documentElement;
+    d.classList.add('js');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('reduce');
+    try { if (sessionStorage.getItem('kbk-seen')) d.classList.add('seen'); } catch (e) {}
+    setTimeout(function () { if (!d.classList.contains('ready')) d.classList.add('ready', 'no-anim'); }, 4000);
+  })();
+</script>
+<script type="application/ld+json" set:html={JSON.stringify(ld)} />
+{schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+</head>
+<body class={solid ? 'is-inner' : ''}>
+<a class="skip" href="#main">{u.skip}</a>
+
+<div class="loader" aria-hidden="true"><Logo size={84} /></div>
+<div class="wipe" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"><span class="cursor-label"></span></div>
+
+<header class="hdr" data-hdr>
+  <a class="brand" href={t.home}>
+    <Logo size={40} />
+    <span class="brand-t"><b>KBK</b><i>Landscape &amp; Beyond</i></span>
+  </a>
+  <nav class="nav" id="nav" aria-label={u.menu}>
+    <ul>
+      {t.nav.map(([label, href]) => (
+        <li><a href={href} aria-current={here(href) ? 'page' : undefined}>{label}</a></li>
+      ))}
+      <li><a class="lang" href={t.alt.prefix + path} hreflang={t.alt.hreflang} lang={t.alt.hreflang} title={t.alt.title} data-no-wipe>{t.alt.label}</a></li>
+    </ul>
+    <div class="nav-foot">
+      <a href={`tel:${biz.tel}`}>{biz.telText}</a>
+      <span>{u.hoursShort}</span>
+    </div>
+  </nav>
+  <a class="btn btn-brass hdr-cta" href={t.href('contact')}><span>{t.quote}</span></a>
+  <button class="burger" type="button" aria-expanded="false" aria-controls="nav">
+    <span class="sr">{u.menu}</span><i></i><i></i>
+  </button>
+</header>
+
+<main id="main"><slot /></main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <p class="eyebrow" data-rise>{c.cta.h2}</p>
+    <a class="ftr-tel" href={`tel:${biz.tel}`} data-cursor={u.call} data-rise>{biz.telText}</a>
+    <p class="ftr-line" data-rise>{c.cta.p}</p>
+    <div class="cta" data-rise>
+      <a class="btn btn-brass" href={t.href('contact')}><span>{c.cta.btn}</span></a>
+      <a class="btn btn-line" href={`mailto:${biz.email}`}><span>{u.email}</span></a>
+    </div>
+    <div class="ftr-grid">
+      <div><h2>{u.office}</h2><p>{biz.street}<br>{biz.city}, {biz.region} {biz.zip}</p></div>
+      <div><h2>{c.page_contact.side.hours}</h2><p>{u.hoursRows[0]}<br>{u.hoursRows[1]}</p></div>
+      <div><h2>{c.footer.links}</h2>
+        <ul class="ftr-links">{t.nav.map(([label, href]) => <li><a class="lnk" href={href}>{label}</a></li>)}</ul>
+      </div>
+      <div><h2>{c.page_contact.side.social}</h2>
+        <ul class="ftr-links">
+          <li><a class="lnk" href={biz.google} rel="noopener" target="_blank">Google</a></li>
+          <li><a class="lnk" href={biz.facebook} rel="noopener" target="_blank">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="ftr-about">{c.footer.about}</p>
+    <div class="ftr-base">
+      <span>© {new Date().getFullYear()} {biz.legal}. {c.footer.rights}</span>
+      <a class="lnk" href={t.href('privacy')}>{c.footer.privacy}</a>
+    </div>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-line" href={`tel:${biz.tel}`}><span>{u.call} {biz.telText}</span></a>
+  <a class="btn btn-brass" href={t.href('contact')}><span>{t.quote}</span></a>
+</div>
+
+<script>
+  import '../scripts/main.js';
+</script>
+</body>
+</html>
